@@ -40,3 +40,8 @@ migration.migrate(
 If `from` or `to` is omitted above there will be no lower or upper limit respectively. If both are omitted all migrations will be run. If `from` is greater than `to` then the down migrations are run.
 
 All versions must follow the [semver](http://semver.org/) format.
+
+Build Status
+------------
+
+[![Build Status](https://travis-ci.org/garethbowen/js-migrations.png?branch=master)](https://travis-ci.org/garethbowen/js-migrations)
