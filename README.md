@@ -1,6 +1,11 @@
 JavaScript Migrations
 =====================
 
+Installation
+-------------------
+
+`npm install js-migrations` or [kanso](http://kan.so/packages/details/js-migrations)
+
 Defining Migrations
 -------------------
 
