@@ -1,0 +1,25 @@
+{
+  "name": "json-migrations",
+  "version": "0.0.1",
+  "description": "Migrate a JSON document",
+  "scripts": {
+    "test": "scripts/test"
+  },
+  "dependencies": {
+    "async": "",
+    "semver": ""
+  },
+  "devDependencies": {
+    "nodeunit": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/garethbowen/json-migrations.git"
+  },
+  "keywords": [
+    "json",
+    "migration"
+  ],
+  "author": "Gareth Bowen",
+  "license": "BSD"
+}
