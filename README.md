@@ -7,7 +7,7 @@ Defining Migrations
 A migration is an object with a `version` and one or both of `up` and `down` functions, which migrate up to, or down from this version respectively. For example:
 
 ```
-var myMigrations = [{
+var myMigration = {
   version: '1.2.5',
   up: function(obj, callback) {
     obj.a = parseInt(obj.a);
@@ -17,7 +17,7 @@ var myMigrations = [{
     obj.a = obj.a + '';
     callback(null, obj);
   }
-}];
+};
 ```
 
 Version should be unique between migrations or there will be no way to tell which set of migrations have been run.
@@ -27,9 +27,14 @@ Running Migrations
 
 ```
 var migration = require('js-migrations');
-migration.migrate({ a: '42' }, myMigrations, { from: '1.1.5', to: '2.1.3' }, function(err, result) {
-  // do something...
-});
+migration.migrate(
+  { a: '42' },
+  [myMigration],
+  { from: '1.1.5', to: '2.1.3' },
+  function(err, result) {
+    // do something...
+  }
+);
 ```
 
 If `from` or `to` is omitted above there will be no lower or upper limit respectively. If both are omitted all migrations will be run. If `from` is greater than `to` then the down migrations are run.
