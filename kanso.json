@@ -1,0 +1,10 @@
+{
+    "name": "js-migrations",
+    "version": "0.0.2",
+    "description": "Migrate a JavaScript object",
+    "modules": ["js-migrations", "test"],
+    "dependencies": {
+        "semver": null,
+        "async": null
+    }
+}
