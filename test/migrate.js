@@ -209,5 +209,3 @@ exports['invalid to version'] = function(test) {
     test.done();
   });
 };
-
-// TODO invalid from and to
