@@ -1,9 +1,10 @@
 {
-  "name": "json-migrations",
+  "name": "js-migrations",
   "version": "0.0.1",
-  "description": "Migrate a JSON document",
+  "description": "Migrate a JavaScript object",
+  "main": "./js-migrations/migration",
   "scripts": {
-    "test": "scripts/test"
+    "test": "nodeunit test/migrate.js"
   },
   "dependencies": {
     "async": "",
@@ -14,12 +15,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/garethbowen/json-migrations.git"
+    "url": "http://github.com/garethbowen/js-migrations.git"
   },
+  "bugs": {
+    "url": "https://github.com/garethbowen/js-migrations/issues"
+  },
+  "homepage": "https://github.com/garethbowen/js-migrations",
   "keywords": [
-    "json",
+    "javascript",
     "migration"
   ],
-  "author": "Gareth Bowen",
-  "license": "BSD"
+  "author": "Gareth Bowen <gareth@bowenwebdesign.co.nz>",
+  "license": "MIT"
 }
