@@ -1,5 +1,4 @@
-var async = require('async'),
-    semver = require('semver');
+var semver = require('semver');
 
 /**
  * @typedef Migration
@@ -29,50 +28,49 @@ var async = require('async'),
  * @param {Migration[]} migrations The migrations to apply
  *     if required
  * @param {Options} [options]
- * @param {function} cb Callback function
  */
-exports.migrate = function(obj, migrations, options, cb) {
+exports.migrate = function(obj, migrations, options) {
 
-  if (!cb) {
-    cb = options;
-    options = {};
-  }
   if (!obj || !migrations) {
-    return cb(null, obj);
+    return { 
+      error: false,
+      result: obj 
+    };
   }
 
-  var from = options.from;
-  var to = options.to;
+  var from = options && options.from;
+  var to = options && options.to;
 
   if (from && !semver.valid(from)) {
-    return cb('Invalid from version provided');
+    return { error: 'Invalid from version provided' };
   }
   if (to && !semver.valid(to)) {
-    return cb('Invalid to version provided');
+    return { error: 'Invalid to version provided' };
   }
 
   var up = !from || !to || semver.lte(from, to);
 
-  async.reduce(
-    _sort(migrations),
-    obj,
-    function(_memo, _migration, _cb) {
+  var migrations = _sort(migrations);
+  var output = {
+    error: false,
+    result: obj
+  };
+  migrations.forEach(function(_migration) {
+    if (!output.error) {
       if (!_migration.version) {
-        _cb('A migration is missing the required version property');
+        output.error = 'A migration is missing the required version property';
       } else if (!semver.valid(_migration.version)) {
-        _cb('A migration has an invalid version property');
+        output.error = 'A migration has an invalid version property';
       } else {
         if (up && _migration.up && _apply(from, to, _migration)) {
-          _migration.up(_memo, _cb);
+          output = _migration.up(output.result);
         } else if (!up && _migration.down && _apply(to, from, _migration)) {
-          _migration.down(_memo, _cb);
-        } else {
-          _cb(null, _memo);
+          output = _migration.down(output.result);
         }
       }
-    },
-    cb
-  );
+    }
+  });
+  return output;
 
 };
 

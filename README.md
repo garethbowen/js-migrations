@@ -16,11 +16,11 @@ var myMigration = {
   version: '1.2.5',
   up: function(obj, callback) {
     obj.a = parseInt(obj.a);
-    callback(null, obj);
+    return { error: false, result: obj };
   },
   down: function(obj, callback) {
     obj.a = obj.a + '';
-    callback(null, obj);
+    return { error: false, result: obj };
   }
 };
 ```
@@ -32,14 +32,13 @@ Running Migrations
 
 ```
 var migration = require('js-migrations');
-migration.migrate(
+var migrated = migration.migrate(
   { a: '42' },
-  [myMigration],
-  { from: '1.1.5', to: '2.1.3' },
-  function(err, result) {
-    // do something...
-  }
+  [ myMigration ],
+  { from: '1.1.5', to: '2.1.3' }
 );
+if (migrated.err) throw migrated.err;
+var obj = migrated.result;
 ```
 
 If `from` or `to` is omitted above there will be no lower or upper limit respectively. If both are omitted all migrations will be run. If `from` is greater than `to` then the down migrations are run.
