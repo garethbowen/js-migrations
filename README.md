@@ -15,8 +15,13 @@ A migration is an object with a `version` and one or both of `up` and `down` fun
 var myMigration = {
   version: '1.2.5',
   up: function(obj, callback) {
-    obj.a = parseInt(obj.a);
-    return { error: false, result: obj };
+    var num = parseInt(obj.a);
+    if (isNaN(num)) {
+      return { error: 'a is not a number' };
+    } else {
+      obj.a = num
+      return { error: false, result: obj };
+    }
   },
   down: function(obj, callback) {
     obj.a = obj.a + '';
