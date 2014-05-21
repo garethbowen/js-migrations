@@ -53,4 +53,4 @@ All versions must follow the [semver](http://semver.org/) format.
 Build Status
 ------------
 
-[![Build Status](https://travis-ci.org/garethbowen/js-migrations.png?branch=master)](https://travis-ci.org/garethbowen/js-migrations)
+[![Build Status](https://travis-ci.org/medic/js-migrations.png?branch=master)](https://travis-ci.org/medic/js-migrations)
