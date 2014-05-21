@@ -1,8 +1,8 @@
 {
   "name": "js-migrations",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Migrate a JavaScript object",
-  "main": "./js-migrations/migration",
+  "main": "./js-migrations",
   "scripts": {
     "test": "nodeunit test/migrate.js"
   },
@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/garethbowen/js-migrations.git"
+    "url": "http://github.com/medic/js-migrations.git"
   },
   "bugs": {
-    "url": "https://github.com/garethbowen/js-migrations/issues"
+    "url": "https://github.com/medic/js-migrations/issues"
   },
-  "homepage": "https://github.com/garethbowen/js-migrations",
+  "homepage": "https://github.com/medic/js-migrations",
   "keywords": [
     "javascript",
     "migration"
